@@ -6,7 +6,8 @@ import {TizunToken} from "src/TizunToken.sol";
 
 contract DeployTizunToken is Script {
     function run() external {
-        vm.startBroadcast();
+        uint privateKey = vm.envUint("DEV_PRIVATE_KEY");
+        vm.startBroadcast(privateKey);
         new TizunToken();
         vm.stopBroadcast();
     }
